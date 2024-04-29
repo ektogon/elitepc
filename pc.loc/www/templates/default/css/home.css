@@ -1,0 +1,93 @@
+/* слайдер */
+
+.slider{
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+}
+.middle{
+    position: relative;
+    top: 85px;
+}
+.navigation{
+    position: absolute;
+    bottom: 20px;
+    left:50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.bar{
+    height: 8px;
+    width: 30px;
+    margin: 10px;
+    opacity: 0,2;
+    cursor: pointer;
+    background-color: #ffffffc5;
+    border-radius: 10px;
+    transition: all .4s ease;
+}
+.bar:hover{
+    opacity: 0.8;
+    transform: scale(1.1);
+    background-color: #43AFAF;
+}
+.slides input[name="r"]{
+    position: absolute;
+    visibility: hidden;
+}
+.slides{
+    width: 200%;
+    height: 800px;
+    display: flex;
+}
+.slide{
+    width: 50%;
+    transition: all .4s ease;
+}
+.slide img{
+    height: 800px;
+}
+#r1:checked ~ .s1{
+    margin-left: 0%;;
+}
+#r2:checked ~ .s1{
+    margin-left: -50%;
+}
+/* #r3:checked ~ .s1{
+    margin-left: -50%;
+}
+#r4:checked ~ .s1{
+    margin-left: -75%;
+} */
+
+.container{
+    margin: 8% 8% 0% 8%;
+}
+.container ol{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 40px;
+}
+.container .headd{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.container .headd p{
+    color: #fff;
+    font-size: 25px;
+}
+.pc{
+    background-color: #43AFAF;
+    border-radius: 30px;
+    padding: 8px;
+    margin: 0px 550px 20px 550px;
+}
+.configure{
+    background-color: #43AFAF;
+    border-radius: 35px;
+    position: relative;
+    top:30px;
+    left: 60px;
+    width: 200px;
+}

@@ -1,0 +1,84 @@
+/* Войти */
+#main {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+  }
+  #main1 {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+  }
+#okno {
+    width: 100%;
+    height: 505%;
+    background: transparent;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#main:target {display: block;}
+#main1:target {display: block;}
+
+.cont{
+    position: absolute;
+    top: 200px;
+    left: 37%;
+}
+ form{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #0E5A6E;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+label{
+    color: #fff;
+}
+form input{
+    margin: 10px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    background-color: #5fbdce;
+    color: #fff;
+}
+form p{
+    color: #fff;
+}
+form a{
+    color: #5fbdce;
+    font-weight: bold;
+}
+
+button{
+    width: 100%;
+    border: unset;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #43AFAF;
+    cursor: pointer;
+    color: #fff;
+} 
+.msg{
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color:rgb(248, 158, 40);
+}
+.none{
+    display: none;
+}

@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    list-style: none;
+    text-decoration: none;
+    color: #43AFAF;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+body::-webkit-scrollbar {
+    width: 10px; 
+}
+body::-webkit-scrollbar-track {
+    background: #0E5A6E; 
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #43AFAF; 
+    border-radius: 20px; 
+}
+body{
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-color: #0E5A6E;
+}
+
+/* 
+    Хеадер 
+*/
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 8%;
+    z-index: 100;
+    box-shadow: 0 5px 10px #000;
+    background-color: #0E5A6E;
+}
+header ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .logo{
+    height: 65px;
+    transition: .5s;
+    padding-right: 120px;
+    margin-top: 10px;
+}
+header .logo:hover{
+    transform: scale(1.1);
+}
+header nav ul li{
+    position: relative;
+    float: left;
+}
+header nav ul li a{
+    padding: 30px;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #0E5A6E;
+}
+header nav ul li a:hover{
+    background-color: #5fbdce;
+}
+.profile{
+    height: 30px;
+}
+nav ul li ul{
+    position: absolute;
+    left: 0;
+    width: 410px;
+    background-color: #0E5A6E;
+    display: none;
+    z-index: 9999;
+}
+nav ul li ul li{
+    width: 100%;
+    border: 1px solid rgba(95, 189, 206,.1);
+}
+nav ul li ul li ul{
+    left: 408px;
+    top:0;
+}
+
+nav ul li:hover > ul{
+    display: initial;
+}
+
+
+
+/* ФУТЕР */
+footer{
+    background-color: #111;
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+    margin-top: 50px;
+}
+.cols{
+    padding-top: 40px;
+    justify-content: space-around;
+}
+.cols p{
+    color: #ffffffb6;
+}
+.cols .white{
+    color:#fff;
+    padding-bottom: 10px;
+}
+.cols ul li{
+    line-height: 35px;
+}
+.cols hr{
+    width: 300px;
+    margin: 4px 0px 4px 0px;
+    color: #ffffffb6;
+}
+.foot{
+    background-color: #080808;
+}
+.foot .txt{
+    margin:40px 8% 40px 8%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.foot h1{
+    font-size: 20px;
+    color: #ffffffb6;
+}
+
+/* Шаблон */
+body{
+    display: block;
+}
+.hideme{
+    display: none;
+}
+
+#leftColumn{
+    float: left;
+    height: 100%;
+    
+}
+
+#leftMenu, #loginBox, #registerBox{
+	padding-bottom: 20px;
+}
+
+.menuCaption{
+	padding: 3px;
+	font-weight: bold; 
+}
+
+.cartBox{
+	padding: 5px 0px 5px 0px;
+}
