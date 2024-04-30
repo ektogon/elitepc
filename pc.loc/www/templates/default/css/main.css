@@ -103,7 +103,7 @@ nav ul li:hover > ul{
 
 /* ФУТЕР */
 footer{
-    background-color: #111;
+    background-color: #1C1C1C;
     position: relative;
     bottom: 0%;
     width: 100%;
@@ -145,11 +145,15 @@ footer{
 body{
     display: block;
 }
+
 .hideme{
     display: none;
 }
 
+
 #leftColumn{
+    padding: 20px;
+    background-color: #111;
     float: left;
     height: 100%;
     

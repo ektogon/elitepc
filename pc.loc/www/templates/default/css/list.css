@@ -1,6 +1,7 @@
 .contain{
-    margin: 10% 10% 0% 10%;
+    margin: 5% 10% 0% 10%;
     margin-left: 200px;
+    min-height: 100%;
 }
 .contain ol{
     display: flex;

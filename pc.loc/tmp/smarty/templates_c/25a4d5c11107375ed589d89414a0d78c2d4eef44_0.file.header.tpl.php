@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.2, created on 2024-04-29 13:33:04
+/* Smarty version 4.5.2, created on 2024-04-30 12:27:07
   from 'D:\OSPanel\domains\pc.loc\views\default\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.2',
-  'unifunc' => 'content_662f7760805398_71922620',
+  'unifunc' => 'content_6630b96b342e29_89508014',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25a4d5c11107375ed589d89414a0d78c2d4eef44' => 
     array (
       0 => 'D:\\OSPanel\\domains\\pc.loc\\views\\default\\header.tpl',
-      1 => 1714386757,
+      1 => 1714469215,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_662f7760805398_71922620 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6630b96b342e29_89508014 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <header id="header">
 	<nav>
@@ -102,5 +102,6 @@ img/phone.png"></a></li>
 	</nav>
 </header>
 
-<body><?php }
+<body>
+<?php }
 }

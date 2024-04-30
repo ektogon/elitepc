@@ -19,9 +19,9 @@ function indexAction($smarty)
     $rsCategory = getCatById($catId);
 
     $rsProducts = getProductById($itemId);
-
+    
 	$rsCategories = getAllMainCatsWithChildren();
-    // d($rsCategory);
+    // 
 	$smarty->assign('pageTitle', 'Главная страница');
 	$smarty->assign('rsCategories', $rsCategories);
 	$smarty->assign('rsProducts', $rsProducts);
