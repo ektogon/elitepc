@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.2, created on 2024-04-29 21:32:28
+/* Smarty version 4.5.2, created on 2024-05-06 15:39:28
   from 'D:\OSPanel\domains\pc.loc\views\default\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.2',
-  'unifunc' => 'content_662fe7bc9fe3d9_84345875',
+  'unifunc' => 'content_6638cf80746ab3_44464468',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7c7dbce96966d3c8a8ed6d63a74745a497c21107' => 
     array (
       0 => 'D:\\OSPanel\\domains\\pc.loc\\views\\default\\index.tpl',
-      1 => 1714415546,
+      1 => 1714999151,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_662fe7bc9fe3d9_84345875 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6638cf80746ab3_44464468 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <div class="contain">
             <ol>
                 <?php
@@ -63,19 +63,31 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']++;
  ₽</h3>
                             <h4>Рассрочка</h4>
                         </div>
-                        <a href="#">
-                            <button class="flex add_to_cart" data-id="<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
-">
+                        <?php if (in_array($_smarty_tpl->tpl_vars['data']->value['id'],$_smarty_tpl->tpl_vars['inCart']->value)) {?>
+                        <a id="removeCart_<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+" <?php if (!in_array($_smarty_tpl->tpl_vars['data']->value['id'],$_smarty_tpl->tpl_vars['inCart']->value)) {?>class="hideme"<?php }?> href="#" onClick="removeFromCart(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+); window.location.reload(); return false;">
+                            <button class="flex add_to_cart">
+                                <h3 style="color: #000; padding-left:5px">Удалить из корзины</h3>
+                            </button>
+                        </a>
+                        <?php } else { ?>
+                        <a id="addCart_<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+" <?php if (in_array($_smarty_tpl->tpl_vars['data']->value['id'],$_smarty_tpl->tpl_vars['inCart']->value)) {?>class="hideme"<?php }?> href="#" onClick="addToCart(<?php echo $_smarty_tpl->tpl_vars['data']->value['id'];?>
+); window.location.reload(); return false;">
+                            <button class="flex add_to_cart">
                                 <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="7.3" cy="17.3" r="1.4"></circle>
                                     <circle cx="13.3" cy="17.3" r="1.4"></circle>
                                     <polyline fill="none" stroke="#000" points="0 2 3.2 4 5.3 12.5 16 12.5 18 6.5 8 6.5">
                                     </polyline>
                                 </svg>
-                                <p style="color: #000; padding-left:5px">Купить
-                                <p>
+                                <h2 style="color: #000; padding-left:5px">Купить</h2>
                             </button>
                         </a>
+                        <?php }?>
+
+                        
                     </div>
                 </div>
                 <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration'] : null) % 3 == 0) {?>

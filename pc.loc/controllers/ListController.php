@@ -13,22 +13,26 @@ function testAction()
 	echo 'IndexController.php > testAction';
 }
 
-// /**
-//  * Формирование главной страницы сайта
-//  * 
-//  * @param object $smarty шаблонизатор
-//  */ 
+/**
+ * Формирование главной страницы сайта
+ * 
+ * @param object $smarty шаблонизатор
+ */ 
 
 function indexAction($smarty)
 {
 	$rsCategories = getAllMainCatsWithChildren();
 	$rsProducts = getLastProducts(32);
 
-	$smarty->assign('pageTitle', 'Главная страница');
+	$smarty->assign('pageTitle', 'Каталог');
 	$smarty->assign('rsCategories', $rsCategories);
 	$smarty->assign('rsProducts', $rsProducts);
+	//
+    $inCart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
-	loadTemplate($smarty, 'linksList');
+    $smarty->assign('inCart',$inCart);
+    //
+
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'leftcolumn');
 	loadTemplate($smarty, 'index');

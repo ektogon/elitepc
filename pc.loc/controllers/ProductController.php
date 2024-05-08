@@ -21,6 +21,12 @@ function indexAction($smarty)
     $rsProducts = getProductById($itemId);
     
 	$rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('itemInCart',0);
+    if(in_array($itemId,$_SESSION['cart'])){
+        $smarty->assign('itemInCart',1);
+    }
+
     // 
 	$smarty->assign('pageTitle', 'Главная страница');
 	$smarty->assign('rsCategories', $rsCategories);
@@ -28,7 +34,7 @@ function indexAction($smarty)
     $smarty->assign('rsCategory', $rsCategory);
 
 
-    loadTemplate($smarty, 'linksProduct');
+
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'product');
 	loadTemplate($smarty, 'footer');

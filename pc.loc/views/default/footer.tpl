@@ -1,5 +1,5 @@
 
-<footer id="footer">
+<footer>
     <div class="container">
         <div class="cols flex">
             <ul>
@@ -79,6 +79,7 @@
         </div>
     </div>
 </footer>
-
+<script type="text/javascript" src="/www/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/www/js/main.js"></script>
 </body>
 </html>	 

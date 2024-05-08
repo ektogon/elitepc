@@ -27,7 +27,10 @@ function indexAction($smarty)
 
     $smarty->assign('rsCategories', $rsCategories);
 
-    loadTemplate($smarty, 'linksList');
+    $inCart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+
+    $smarty->assign('inCart',$inCart);
+
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'leftcolumn');
     loadTemplate($smarty, 'index');

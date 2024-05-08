@@ -36,3 +36,15 @@ function getProductById($itemId) {
     $rs = mysqli_query($db,$sql);
     return mysqli_fetch_assoc($rs);
 }
+
+/**
+ * Получить список продуктов из массива идентификаторов
+ */
+function getProductsFromArray($itemsIds){
+    include '../config/db.php';
+    $strIds = implode(', ',$itemsIds);
+    $sql = "SELECT*FROM `goods` WHERE `id` in ($strIds)";
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+}

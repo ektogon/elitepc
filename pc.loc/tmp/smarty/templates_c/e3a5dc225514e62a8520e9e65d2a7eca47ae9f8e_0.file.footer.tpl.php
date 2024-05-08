@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.2, created on 2024-04-30 12:27:07
+/* Smarty version 4.5.2, created on 2024-05-07 22:33:54
   from 'D:\OSPanel\domains\pc.loc\views\default\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.2',
-  'unifunc' => 'content_6630b96b41a2d0_90107103',
+  'unifunc' => 'content_663a82224a0d31_60210650',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e3a5dc225514e62a8520e9e65d2a7eca47ae9f8e' => 
     array (
       0 => 'D:\\OSPanel\\domains\\pc.loc\\views\\default\\footer.tpl',
-      1 => 1714469222,
+      1 => 1715110432,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6630b96b41a2d0_90107103 (Smarty_Internal_Template $_smarty_tpl) {
+function content_663a82224a0d31_60210650 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<footer id="footer">
+<footer>
     <div class="container">
         <div class="cols flex">
             <ul>
@@ -102,7 +102,12 @@ function content_6630b96b41a2d0_90107103 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </footer>
-
+<?php echo '<script'; ?>
+ type="text/javascript" src="/www/js/jquery-3.4.1.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript" src="/www/js/main.js"><?php echo '</script'; ?>
+>
 </body>
 </html>	 
 <?php }
