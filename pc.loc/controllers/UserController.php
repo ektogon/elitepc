@@ -1,6 +1,8 @@
 <?php
 include_once '../models/CategoriesModel.php';
 include_once '../models/UsersModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * Регистрация нового пользователя
@@ -11,7 +13,6 @@ function registerAction()
 {
     session_start();
     include '../config/db.php';
-    unset($resData);
 
     $name = trim(htmlspecialchars((mysqli_real_escape_string($db, $_POST['name']))));
     $email = trim(htmlspecialchars((mysqli_real_escape_string($db, $_POST['email']))));
@@ -52,54 +53,18 @@ function authorizationAction()
     session_start();
     include '../config/db.php';
 
-    $login = $_POST['login'];
-    $password = md5($_POST['password']);
+    $login = trim(htmlspecialchars((mysqli_real_escape_string($db, $_POST['login']))));
+    $password = md5(trim(htmlspecialchars((mysqli_real_escape_string($db, $_POST['password'])))));
 
-    $error_fields = [];
+    $resData = checkLoginParams($login, $password);
 
-    if ($login === '') {
-        $error_fields[] = 'login';
-    }
-
-    if ($password === '') {
-        $error_fields[] = 'password';
-    }
-
-    if (!empty($error_fields)) {
-        $response = [
-            "status" => false,
-            "type" => 1,
-            "message" => "Проверьте правильность полей",
-            "fields" => $error_fields
-        ];
-
-        echo json_encode($response);
-
+    if ($resData['status'] == false) {
+        echo json_encode($resData);
         die();
     }
 
-    $check_user = mysqli_query($db, "SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
-    if (mysqli_num_rows($check_user) > 0) {
-
-        $user = mysqli_fetch_assoc($check_user);
-
-        $_SESSION['user'] = [
-            "id" => $user['id'],
-            "name" => $user['name'],
-            "email" => $user['email']
-        ];
-        $response = [
-            "status" => true
-        ];
-        echo json_encode($response);
-    } else {
-
-        $response = [
-            "status" => false,
-            "message" => 'Не верный логин или пароль'
-        ];
-        echo json_encode($response);
-    }
+    $resData = login($login, $password);
+    echo json_encode($resData);
 }
 
 /**
@@ -110,22 +75,85 @@ function authorizationAction()
 function logoutAction()
 {
     unset($_SESSION['user']);
-    unset($_SESSION['cart']);
     header("Location: /");
 }
 
 
-function indexAction($smarty){
-    
-    if(!isset($_SESSION['user'])){
+function indexAction($smarty)
+{
+
+    if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
 
     $rsCategories = getAllMainCatsWithChildren();
-
+    $rsUserOrders = getAllUserOrders();
+    
     $smarty->assign('pageTitle', 'Страница пользователя');
-    $smarty->assign('rsCategories',$rsCategories); 
-
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
+    // d($rsUserOrders);
+    
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');
+}
+
+/**
+ * Обновление данных пользователя
+ *
+ * @param [type] $smarty
+ * @return void
+ */
+function updateAction($smarty)
+{
+
+    if (!isset($_SESSION['user'])) {
+        header("Location: /");
+    }
+    $resData = array();
+
+    $name = isset($_POST['name']) ? $_POST['name'] : null;
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
+    $pwd1 = isset($_POST['pwd1']) ? $_POST['pwd1'] : null;
+    $pwd2 = isset($_POST['pwd2']) ? $_POST['pwd2'] : null;
+    $curpwd = isset($_POST['curpwd']) ? $_POST['curpwd'] : null;
+
+    $curpwdmd5 = md5($curpwd);
+
+    if (!$curpwd || ($_SESSION['user']['password'] != $curpwdmd5)) {
+        $resData['success'] = false;
+        $resData['message'] = 'Текущий пароль не верный';
+        echo json_encode($resData);
+        die();
+    }
+
+    $res = updateUserData($email, $name, $pwd1, $pwd2, $curpwdmd5);
+
+    if ($res) {
+        $resData['success'] = true;
+        $resData['message'] = 'Данные сохранены';
+        $resData['userName'] = $name;
+
+        $newpwd = $_SESSION['user']['password'];
+        if ($pwd1 && ($pwd1 == $pwd2)) {
+            $newpwd = md5(trim($pwd1));
+        }
+
+        $_SESSION['user']['password'] = $newpwd;
+        $_SESSION['user']['name'] = $name;
+        $_SESSION['user']['email'] = $email;
+    } else {
+        $resData['success'] = false;
+        $resData['message'] = 'Ошибка сохранения данных';
+    }
+    echo json_encode($resData);
+    die();
+}
+
+function deleteorderAction($smarty)
+{
+    $orderID = $_POST['orderID'];
+    $resData = delOrder( $orderID );
+    echo json_encode($resData);
+    die();
 }

@@ -126,3 +126,57 @@ function login($login,$password){
     }
     return $response;
 }
+
+/**
+ * Изменение данных пользователя
+ *
+ * @param [type] $email
+ * @param [type] $name
+ * @param [type] $pwd1
+ * @param [type] $pwd2
+ * @param [type] $curpwd
+ * @return void
+ */
+function updateUserData($email,$name,$pwd1,$pwd2,$curpwd){
+    include '../config/db.php';
+    $name = trim(htmlspecialchars((mysqli_real_escape_string($db, $name))));
+    $email = trim(htmlspecialchars((mysqli_real_escape_string($db, $email))));
+    $login = trim(htmlspecialchars((mysqli_real_escape_string($db, $_SESSION['user']['login']))));
+    $curpwd = trim(htmlspecialchars((mysqli_real_escape_string($db, $curpwd))));
+    $pwd1 = trim($pwd1);
+    $pwd2 = trim($pwd2);
+
+    $newpwd = null;
+    if($pwd1 && ($pwd1 == $pwd2)){
+        $newpwd = md5($pwd1);
+    }
+
+    $sql = "UPDATE `users` SET ";
+    
+    if($newpwd) $sql .= "`password` = '{$newpwd}' ";
+    
+    if($email){
+        if($newpwd) $sql .= ", ";
+        $sql .= "`email` = '{$email}' ";
+    } 
+
+    if($name){
+        if($email) $sql .= ", ";
+        $sql .= "`name` = '{$name}' ";
+    } 
+
+    $sql .= " WHERE `login` = '{$login}' 
+             AND `password` = '{$curpwd}'
+             LIMIT 1";
+             
+    $response = mysqli_query($db, $sql);
+    return $response;
+}
+
+
+function getAllUserOrders(){
+    
+    $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] :0;
+    $rs = getOrdersWithProductsByUser($userId);
+    return $rs;
+}

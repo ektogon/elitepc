@@ -33,6 +33,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
+    width: 100%;
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -42,11 +43,9 @@ body {
 /* 
     Хеадер 
 */
-@media screen and (max-width: 1250px) {
-
-}
 
 header {
+    min-width: 1250px;
     position: fixed;
     top: 0;
     left: 0;
@@ -125,6 +124,7 @@ nav ul li:hover>ul {
 footer {
     background-color: #1C1C1C;
     width: 100%;
+    min-width: 1250px;
     margin-top: 50px;
 }
 
@@ -230,6 +230,7 @@ body {
 
 .contain ol {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -336,7 +337,7 @@ body {
 
 }
 
-form {
+.form {
     border-radius: 20px;
     padding: 20px;
     background-color: #0E5A6E;
@@ -349,7 +350,7 @@ label {
     color: #fff;
 }
 
-form input {
+.form input {
     margin: 10px 0;
     padding: 10px;
     border: unset;
@@ -359,17 +360,17 @@ form input {
     color: #fff;
 }
 
-form p {
+.form p {
     color: #fff;
 }
 
-form a {
+.form a {
     color: #5fbdce;
     cursor: pointer;
     font-weight: bold;
 }
 
-form button {
+.form button {
     width: 100%;
     border: unset;
     padding: 10px;
@@ -521,11 +522,26 @@ td .headd p {
     color: #ffffff8f;
     font-style: oblique
 }
-
+.res{
+    width: 400px;
+    float: right;
+    margin-right: 20px;
+}
+.res th{
+    background: #1B1B1B;
+    color:white;
+}
+.res td{
+    color:white;border: none;
+}
 .wrap-table {
-    width: 1300px
+    width: 75vw;
+    margin: auto;
 }
 
+.container-table form{
+    width: 100%;
+}
 .cart_item {
     justify-content: start;
     margin-left: 30px;
@@ -589,6 +605,13 @@ tbody tr:hover {
     cursor: pointer;
 }
 
+.counter_btn:hover{
+    background-color: #308ea5;
+}
+.counter_btn:active{
+    background-color: #308ea58a;
+}
+
 td input {
     width: 50px;
     text-align: center;
@@ -605,7 +628,7 @@ td input {
 
 .slider {
     overflow: hidden;
-    width: 100vw;
+    width: 100%;
 }
 
 .middle {
@@ -644,26 +667,22 @@ td input {
 }
 
 .slides {
-    /* width: 200%; */
-    width: 200vw;
+    width: 200%;
     /* height: 800px; */
     display: flex;
 }
 
 .slide {
-    /* width: 50%; */
-    width: 100vw;
+    width: 50%;
     transition: all .4s ease;
 }
 
 .slide img {
     /* height: 800px; */
-    a
 }
 
 #r1:checked~.s1 {
     margin-left: 0%;
-    ;
 }
 
 #r2:checked~.s1 {
@@ -683,9 +702,9 @@ td input {
 
 .cont_home ol {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    padding-bottom: 40px;
 }
 
 .cont_home .headd {
@@ -699,10 +718,11 @@ td input {
 }
 
 .pc {
+    width: 500px;
     background-color: #43AFAF;
     border-radius: 30px;
     padding: 8px;
-    margin: 0px 550px 20px 550px;
+    margin: 30px auto;
 }
 
 .configure {
@@ -723,6 +743,7 @@ td input {
 }
 
 .item_config {
+    margin: 20px;
     width: 400px;
     height: 750px;
     border-radius: 30px;
@@ -776,6 +797,7 @@ hr {
 .periphery {
     width: 220px;
     height: 200px;
+    margin: 10px;
     background-color: #111;
     border-radius: 30px;
 }
@@ -795,6 +817,7 @@ hr {
 /* услуги */
 
 .service {
+    margin: 20px;
     background-color: #111;
     width: 500px;
     height: 790px;
@@ -857,3 +880,104 @@ hr {
 /*
 Страница пользователя
 */
+.name-user{
+    padding-top: 50px;
+}
+.name-user p{
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff;
+}
+.name-user h1{
+    font-size: 20px;
+    font-weight: 300;
+    color: #ffffffbe;
+}
+.name-user p,.name-user h1{
+    width: 100%;
+    text-align: center;
+}
+.btn_or{
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0E5A6E;
+    padding: 10px;
+    float: right;
+    margin-right: 70px;
+    margin-top: 20px;
+}
+
+.user_info{
+    position: relative;
+    padding: 30px;
+}
+.user_info input{
+    background-color: #5fbdce;
+    width: 400px;
+    height: 70px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    color:#000;
+}
+.user_info input::-webkit-input-placeholder { color: black; }
+.user_info label{
+    margin-top: 30px;
+    position: absolute;
+    left: 50px;
+}
+.user_info .mes{
+    width: 400px;
+}
+.user_info .btn{
+    cursor: pointer;
+    padding: 0;
+}
+.user_info .btn:hover{
+    background-color: #147891;
+}
+
+.user-item{
+    width: 100%;
+    display: block;
+    background-color: #0E5A6E;
+    border-radius: 20px;
+    margin: 30px 0;
+}
+.user-item-head{
+    padding: 20px;
+    margin-left: 20px;
+}
+.user-item-head h1{
+    color:#fff;
+    font-size: 24px;
+    padding: 5px 0;
+}
+.user-goods{
+    background-color: #308ea5;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 35px;
+    padding-top: 20px;
+    
+}
+.user-goods img{
+    width: 150px;
+    margin-right: 15px;
+}
+.user-goods p{
+    text-align: center;
+    font-size: 16px;
+    width: 24px;
+    padding: 2px;
+    background-color: #0E5A6E;
+    border-radius: 13px;
+    color: #fff;
+    position: relative;
+    top: -90px;
+    left: 130px;
+}

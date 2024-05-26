@@ -147,7 +147,7 @@
         <div class="headd">
             <p class="pc">Услуги</p>
         </div>
-        <ol class="services">
+        <ol>
             {foreach $rsServices as $data}
             <div class="service">
                 <img src="{$teplateWebPath}{$data['image']}">

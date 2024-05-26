@@ -5,10 +5,12 @@
 $('#login-btn').click(function (e) {
     e.preventDefault();
 
+
     $('input').removeClass('error');
 
     let login = $('input[name="loginn"]').val(),
         password = $('input[name="password"]').val();
+    const currentUrl = window.location.href;
 
     $.ajax({
         url: '/user/authorization/',
@@ -21,7 +23,7 @@ $('#login-btn').click(function (e) {
         success(data) {
             if (data.status) {
                 $('.msg').removeClass('none').text(data.message);
-                document.location.href = '/';
+                document.location.href = currentUrl;
             } else {
 
                 if (data.type === 1) {
@@ -171,5 +173,91 @@ function show(div, state) {
     }
 }
 
+function updateUserData() {
+    // console.log('js- update')
+    var name = $('#newName').val();
+    var email = $('#newEmail').val();
+    var pwd1 = $('#newpwd1').val();
+    var pwd2 = $('#newpwd2').val();
+    var curpwd = $('#curpwd').val();
 
+    var postData = {
+        name: name,
+        email: email,
+        pwd1: pwd1,
+        pwd2: pwd2,
+        curpwd: curpwd
+    }
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/update/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (data['success']) {
+                $('#userLink').html(data['userName']);
+                $('.msg').removeClass('none').text(data.message);
+            } else {
+                $('.msg').removeClass('none').text(data.message);
+            }
+        }
+    });
+}
 
+function getData(obj_form){
+    var hData = {};
+    $('input','textarea','select', obj_form).each(function(){
+        if(this.name && this.name!=''){
+            hData[this.name] = this.value;
+        }
+    });
+    return hData;
+}
+
+function saveOrder(){
+    var postData = getData('form');
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/cart/saveorder/",
+        data: postData,
+        dataType: 'json',
+        success: function(data){
+            if(data['success']){
+                alert(data['message']);
+                document.location = '/cart/';
+            } else{
+                alert(data['message']);
+            }
+        }
+    });
+}
+
+$('#delete-btn').click(function (e) {
+    e.preventDefault();
+    const currentUrl = window.location.href;
+    const $elem = document.querySelector('#order-number');
+    const text = $elem.textContent;
+    let orderID=text.split('№ ').pop();
+    
+    var postData = {
+        orderID: orderID
+    }
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '/user/deleteorder/',
+        dataType: 'json',
+        data: postData,
+        success(data) {
+            if(data['success']){
+                alert(data['message']);
+                document.location.href = currentUrl;
+            } else{
+                alert(data['message']);
+            }
+        }
+    });
+});

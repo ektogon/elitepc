@@ -47,10 +47,7 @@
                         
                     </div>
                 </div>
-                {if $smarty.foreach.products.iteration mod 3 ==0}
-            </ol>
-            <ol>
-                {/if}
+                
                 {/foreach}
             </ol>
         </div>

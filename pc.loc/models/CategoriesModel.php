@@ -53,3 +53,5 @@ function getCatById($catId){
 
     return mysqli_fetch_assoc($rs);
 }
+
+

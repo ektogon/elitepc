@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.2, created on 2024-05-06 15:39:28
+/* Smarty version 4.5.2, created on 2024-05-08 22:11:20
   from 'D:\OSPanel\domains\pc.loc\views\default\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.2',
-  'unifunc' => 'content_6638cf80746ab3_44464468',
+  'unifunc' => 'content_663bce58bf8d71_39620350',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7c7dbce96966d3c8a8ed6d63a74745a497c21107' => 
     array (
       0 => 'D:\\OSPanel\\domains\\pc.loc\\views\\default\\index.tpl',
-      1 => 1714999151,
+      1 => 1715195479,
       2 => 'file',
     ),
   ),
@@ -20,17 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6638cf80746ab3_44464468 (Smarty_Internal_Template $_smarty_tpl) {
+function content_663bce58bf8d71_39620350 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <div class="contain">
             <ol>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsProducts']->value, 'data', false, NULL, 'products', array (
-  'iteration' => true,
 ));
 $_smarty_tpl->tpl_vars['data']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['data']->value) {
 $_smarty_tpl->tpl_vars['data']->do_else = false;
-$_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']++;
 ?>
                 <div class="item">
                     <a href="/category/<?php echo $_smarty_tpl->tpl_vars['data']->value['type_of_product'];?>
@@ -90,10 +88,7 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']++;
                         
                     </div>
                 </div>
-                <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration'] : null) % 3 == 0) {?>
-            </ol>
-            <ol>
-                <?php }?>
+                
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
